@@ -1,6 +1,9 @@
 
 % Geocentric Solar Ecliptic coordinate system
 
+% set size of figure
+figure('Renderer','painters','Position',[10 10 1000 700])
+
 addpath '/home/mark.miesch/opt/matlab_exchange'
 
 % draw ecliptic
@@ -39,3 +42,6 @@ pz = [1,0,L];
 mArrow3(p0,px)
 mArrow3(p0,py)
 mArrow3(p0,pz)
+
+% set view angle
+view(30,30)
