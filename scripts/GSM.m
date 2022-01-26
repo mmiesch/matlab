@@ -53,5 +53,7 @@ mArrow3(p0,px)
 mArrow3(p0,py)
 mArrow3(p0,pz)
 
+plot3([1,1],[0,0],[0,0.8],':','Color','black','Linewidth',4)
+
 % rotate view
 view(-45,30)
