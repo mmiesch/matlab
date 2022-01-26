@@ -2,16 +2,16 @@
 % Geocentric Solar Magnetospheric (GSM) Coordinate system
 
 % set size of figure
-figure('Renderer','painters','Position',[10 10 800 800])
+figure('Renderer','painters','Position',[10 10 1000 700])
 
 addpath '/home/mark.miesch/opt/matlab_exchange'
 
 % draw ecliptic
-[x y] = meshgrid(-2:0.1:2)
+[x y] = meshgrid(-2:0.05:2)
 z = zeros(size(x,1))
 surf(x,y,z,'FaceAlpha',0.5,'EdgeColor','none','FaceColor','#797979')
-xlim([-2,2])
-ylim([-2,2])
+xlim([-1.5,1.5])
+ylim([-1.5,1.5])
 zlim([-1,1])
 axis off
 
@@ -34,7 +34,7 @@ z = zeros(size(x))
 plot3(x,y,z,'Color','black','LineWidth',2)
 
 % draw yz plane
-[y z] = meshgrid(-2:0.1:2)
+[y z] = meshgrid(-2:0.05:2)
 x = ones(size(y))
 surf(x,y,z,'EdgeColor','none','FaceColor','#DAA520','FaceAlpha',0.5)
 
@@ -52,3 +52,6 @@ pz = [1,zy,zz];
 mArrow3(p0,px)
 mArrow3(p0,py)
 mArrow3(p0,pz)
+
+% rotate view
+view(-45,30)
