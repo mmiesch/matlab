@@ -1,5 +1,5 @@
 
-% Earth Centered Intertial (J2000/EME200) Coordinate system
+% Geocentric Solar Ecliptic coordinate system
 
 addpath '/home/mark.miesch/opt/matlab_exchange'
 
@@ -30,28 +30,12 @@ y = cos(t)
 z = zeros(size(x))
 plot3(x,y,z,'Color','black','LineWidth',2)
 
-% draw Earth's equatorial plane
-th = 23.5 * pi / 180.0
-ph = 4- 0 * pi / 180.0
-A = sin(th)*sin(ph)
-B = - sin(th)*cos(ph)
-C = cos(th)
-D = -1*A
-[x y] = meshgrid(-2:0.1:2)
-z = -1/C*(A*x + B*y + D)
-surf(x,y,z,'EdgeColor','none','FaceColor','#82CAFF','FaceAlpha',0.5)
-
 % draw axes
-dd = sqrt(1 + (A/B)^2)
-xx = 1.0 / dd
-xy = - A / (B*dd)
-yx = - C*xy
-yy = C*xx
-yz = A*xy - B*xx
+L = 0.8
 p0 = [1,0,0];
-px = [xx+1,xy,0];
-py = [yx+1,yy,yz];
-pz = [A+1,B,C];
+px = [1-L,0,0];
+py = [1,-L,0];
+pz = [1,0,L];
 mArrow3(p0,px)
 mArrow3(p0,py)
 mArrow3(p0,pz)
