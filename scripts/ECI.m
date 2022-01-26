@@ -1,10 +1,13 @@
 
 % Earth Centered Intertial (J2000/EME200) Coordinate system
 
+% set size of figure
+figure('Renderer','painters','Position',[10 10 1000 700])
+
 addpath '/home/mark.miesch/opt/matlab_exchange'
 
 % draw ecliptic
-[x y] = meshgrid(-2:0.1:2)
+[x y] = meshgrid(-2:0.02:2)
 z = zeros(size(x,1))
 surf(x,y,z,'FaceAlpha',0.5,'EdgeColor','none','FaceColor','#797979')
 xlim([-2,2])
@@ -32,12 +35,12 @@ plot3(x,y,z,'Color','black','LineWidth',2)
 
 % draw Earth's equatorial plane
 th = 23.5 * pi / 180.0
-ph = 4- 0 * pi / 180.0
+ph = - 30 * pi / 180.0
 A = sin(th)*sin(ph)
 B = - sin(th)*cos(ph)
 C = cos(th)
 D = -1*A
-[x y] = meshgrid(-2:0.1:2)
+[x y] = meshgrid(-2:0.02:2)
 z = -1/C*(A*x + B*y + D)
 surf(x,y,z,'EdgeColor','none','FaceColor','#82CAFF','FaceAlpha',0.5)
 
@@ -55,3 +58,6 @@ pz = [A+1,B,C];
 mArrow3(p0,px)
 mArrow3(p0,py)
 mArrow3(p0,pz)
+
+% rotate view
+view(60,40)
