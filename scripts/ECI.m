@@ -46,8 +46,8 @@ surf(x,y,z,'EdgeColor','none','FaceColor','#82CAFF','FaceAlpha',0.5)
 
 % draw axes
 dd = sqrt(1 + (A/B)^2)
-xx = 1.0 / dd
-xy = - A / (B*dd)
+xx = - 1.0 / dd
+xy = A / (B*dd)
 yx = - C*xy
 yy = C*xx
 yz = A*xy - B*xx
@@ -59,28 +59,27 @@ mArrow3(p0,px)
 mArrow3(p0,py)
 mArrow3(p0,pz)
 
-% draw angle
-%y1 = - A / B
-%p1 = [2,y1,0]
-%z2 = 0.5
-%y2 = - (A + C*z2)/B
-%p2 = [2,y2,z2]
-%L = sqrt((y2-y1)^2 + z2^2)
-%y3 = y1 + L
-%plot3([2,2],[y1,y2],[0,z2],'Color','black','Linewidth',2)
-%plot3([2,2],[y1,y3],[0,0],'Color','black','Linewidth',2)
+% draw lines to indicate obliquity
 
-x2 = yx+1
-y2 = yy
+L = 2.0
 
-plot3([1,x2],[0,y2],[0,0],'--','Color','black','Linewidth',2)
+p1x = 1 - yx
+p1y = - yy
+dd = sqrt(p1x^2 + p1y^2)
+p1x = L * p1x / dd
+p1y = L * p1y / dd
 
-%r = 0.5
-%zeta = 0:0.01:th
-%z = r * sin(zeta)
-%y = - r * cos(zeta) 
-%x = 1 + sqrt(r^2 - y^2 - z^2)
-%plot3(x,y,z)
+p2x = 1 - yx
+p2y = - yy
+p2z = - yz
+dd = sqrt(p2x^2 + p2y^2 + p2z^2)
+p2x = L * p2x / dd
+p2y = L * p2y / dd
+p2z = L * p2z / dd
+
+plot3([1,p1x],[0,p1y],[0,0],':','Color','black','Linewidth',2)
+plot3([1,p2x],[0,p2y],[0,p2z],':','Color','black','Linewidth',2)
+
 
 % rotate view
 view(60,40)
